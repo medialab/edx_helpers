@@ -1,4 +1,4 @@
-edx_helpers
+EDX Helpers
 ===========
 
-helpers to publish content in an EDX mooc platform
+Helpers to publish content in an EDX mooc platform
