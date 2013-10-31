@@ -15,4 +15,4 @@ from scribd_pattern import ScribdPattern
 
 class ScribdExtension(Extension):
     def extendMarkdown(self, md, md_globals):
-        md.inlinePatterns.add('scribd', ScribdPattern(md), '<references')
+        md.inlinePatterns.add('scribd', ScribdPattern(md), '>not_strong')

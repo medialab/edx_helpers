@@ -1,0 +1,24 @@
+# -------------------------------------------------------------------
+# EdxBuilder Course Layout Example
+# -------------------------------------------------------------------
+#
+#
+#   Author : Guillaume Plique
+#   Organization : Sciences-Po Medialab
+#   Version : 0.1.0
+
+course:
+    advanced_modules: []
+    course_image: 'cover.png'
+    display_name: 'EdxBuilder Test Course'
+    start: '2013-10-28T11:00:00Z'
+    sequences:
+        - display_name: 'Sequence #1'
+          start: '2013-10-28T12:00:00Z'
+          subsequences:
+            - display_name: 'Subsequence #1'
+              start: '2013-10-28T12:00:00Z'
+              path: '/subsequence1'
+            - display_name: 'Subsequence #2'
+              start: '2013-10-28T12:00:00Z'
+              path: '/subsequence2'

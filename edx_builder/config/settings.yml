@@ -1,0 +1,21 @@
+# -------------------------------------------------------------------
+# EdxBuilder Settings
+# -------------------------------------------------------------------
+#
+#
+#   Author : Guillaume Plique
+#   Organization : Sciences-Po Medialab
+#   Version : 0.1.0
+
+# Basic Informations
+version: 'EdxBuilder 0.1.0'
+description: 'Description of the program.'
+usage: 'How to deal with your program'
+arguments:
+- [ ['colifrapy_action'], {'choices': ['test', 'build']} ]
+- [ ['target'] ]
+
+# Logger Settings
+logger:
+    strings: 'config/strings.yml'
+    flavor: 'elegant'
