@@ -11,14 +11,12 @@
 #=============
 import yaml
 from colifrapy import Model
+from course_folder import CourseFolder
+from templates.chapter import ChapterXMLTemplate
 
 # Main Class
 #===========
 class Controller(Model):
-    
-    # Properties
-    folder = None
-    layout = None
 
     # Announcement
     def __init__(self):
@@ -27,14 +25,11 @@ class Controller(Model):
     # Building Package
     def build(self):
 
-        self.folder = self.opts.target.rstrip('/')+'/'
+        # Parsing folder
+        folder = CourseFolder(self.opts.target)
 
-        # Retrieving course configuration
-        self.log.write('main:retrieving_layout')
-        with open(self.folder+'course_layout.yml', 'r') as yf:
-            self.layout = yaml.load(yf.read())
-
-        print self.layout
+        # Creating XML
+        course = ChapterXMLTemplate(folder)
 
     # Testing
     def test(self):

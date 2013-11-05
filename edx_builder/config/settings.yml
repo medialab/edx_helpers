@@ -14,8 +14,11 @@ usage: 'How to deal with your program'
 arguments:
 - [ ['colifrapy_action'], {'choices': ['test', 'build']} ]
 - [ ['target'] ]
+- [ ['-o', '--output'], {'default': 'output'}]
+
 
 # Logger Settings
 logger:
     strings: 'config/strings.yml'
     flavor: 'elegant'
+    exceptions: False

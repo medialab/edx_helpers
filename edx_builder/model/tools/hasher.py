@@ -1,5 +1,5 @@
 # -------------------------------------------------------------------
-# EdxBuilder Example Model
+# EdxBuilder hasher
 # -------------------------------------------------------------------
 #
 #
@@ -9,14 +9,11 @@
 
 # Dependencies
 #=============
-from colifrapy import Model
+import md5
+import random
 
-
-# Main Class
-#===========
-class ExampleModel(Model):
-    
-    # Example of model action
-    def hello(self):
-        self.log.write('main:model')
-        self.log.write('main:test')
+# Hashing a feed to generate element identifier
+def hashid(feed):
+    m = md5.new()
+    m.update(unicode(feed) + unicode(random.randint(1, 100)))
+    return m.hexdigest()

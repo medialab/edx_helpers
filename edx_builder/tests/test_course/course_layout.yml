@@ -18,7 +18,16 @@ course:
           subsequences:
             - display_name: 'Subsequence #1'
               start: '2013-10-28T12:00:00Z'
-              path: '/subsequence1'
+              path: 'subsequence1'
             - display_name: 'Subsequence #2'
               start: '2013-10-28T12:00:00Z'
-              path: '/subsequence2'
+              path: 'subsequence2'
+        - display_name: 'Sequence #2'
+          start: '2013-10-28T12:00:00Z'
+          subsequences:
+            - display_name: 'Subsequence #21'
+              start: '2013-10-28T12:00:00Z'
+              path: 'subsequence1'
+            - display_name: 'Subsequence #22'
+              start: '2013-10-28T12:00:00Z'
+              path: 'subsequence2'

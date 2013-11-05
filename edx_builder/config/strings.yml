@@ -11,5 +11,9 @@
 # Main Strings
 main:
     title: 'EdxBuilder'
-    retrieving_layout: 'Retrieving course layout//VERBOSE'
+    retrieving: 'Retrieving course info in : {{path}}//INFO'
     test: 'Testing...//INFO'
+    course_name: 'Treating course: "{{course_name}}"//INFO'
+errors:
+    aborting: 'Aborting...//WARNING'
+    course_not_found: 'Course layout not found.//ERROR'
