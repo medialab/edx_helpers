@@ -1,5 +1,5 @@
 # -------------------------------------------------------------------
-# EdxBuilder Hasher
+# EdxBuilder Vertical XML Template
 # -------------------------------------------------------------------
 #
 #
@@ -9,12 +9,14 @@
 
 # Dependencies
 #=============
-import md5
-import random
+from lxml import etree
+from template import XMLTemplate
+from model.tools.hasher import hashid
 
+# Html Components
+#================
+class HtmlXMLTemplate(XMLTemplate):
+    pass
 
-# Hashing a feed to generate element identifier
-def hashid(feed):
-    m = md5.new()
-    m.update(unicode(feed) + unicode(random.randint(1, 100)))
-    return m.hexdigest()
+class VideoXMLTemplate(XMLTemplate):
+    pass

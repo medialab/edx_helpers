@@ -9,39 +9,36 @@
 
 # Dependencies
 #=============
-from lxml import etree
 from template import XMLTemplate
-from model.tools.hasher import hashid
+from sequential import SequentialXMLTemplate
 
 
+# AKA Section
 class ChapterXMLTemplate(XMLTemplate):
 
     # Properties
-    sequences = []
+    subsections = []
 
-    def __init__(self, folder):
-        self.folder = folder
+    def __init__(self, id, data):
+        self.id = id
+        self.data = data
         self.configure(
             'chapter',
             {
-                'display_name': self.folder.layout['display_name'],
-                'start': self.folder.layout['start']
+                'display_name': self.data['name'],
+                'start': self.data['start']
             }
         )
 
-        self.computeSequences()
-
-    # Computing Sequences
-    def computeSequences(self):
-        for s in self.folder.sequences():
-
-            # Adding to root element
-            se = etree.Element('sequential')
-            se.set('url_name', hashid(s['display_name']))
-            self.root.append(se)
-            
-            # Adding to sequences objects
-
+        self.computeSubsections()
         print self
 
-        # Init new templates passing them the hash value
+    # Computing Sequences
+    def computeSubsections(self):
+        for sub in self.data['subsections']:
+
+            # Adding to root element
+            h = self.addChild('sequential', sub['name'])
+            
+            # Initialize sequential templates
+            self.subsections.append(SequentialXMLTemplate(h, sub))

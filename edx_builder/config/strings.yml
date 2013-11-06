@@ -17,3 +17,4 @@ main:
 errors:
     aborting: 'Aborting...//WARNING'
     course_not_found: 'Course layout not found.//ERROR'
+    file_not_found: 'Subsequence file not found: {{path}}//ERROR'

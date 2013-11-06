@@ -9,10 +9,12 @@
 
 # Dependencies
 #=============
+import os
 import yaml
 from colifrapy import Model
+from colifrapy.tools.utilities import normalize_path
 from course_folder import CourseFolder
-from templates.chapter import ChapterXMLTemplate
+from templates.course import CourseXMLTemplate
 
 # Main Class
 #===========
@@ -28,8 +30,13 @@ class Controller(Model):
         # Parsing folder
         folder = CourseFolder(self.opts.target)
 
+        # Creating output folder
+        self.opts.output = normalize_path(self.opts.output, True)
+        if not os.path.exists(self.opts.output):
+            os.mkdir(self.opts.output)
+
         # Creating XML
-        course = ChapterXMLTemplate(folder)
+        course = CourseXMLTemplate(folder)
 
     # Testing
     def test(self):

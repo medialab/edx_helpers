@@ -31,22 +31,36 @@ class CourseFolder(Model):
         # Reading layout
         try:
             yf = open(self.path+'course_layout.yml', 'r')
-            self.layout = yaml.load(yf.read())['course']
+            self.layout = yaml.load(yf.read())
         except IOError:
             self.log.write('errors:course_not_found')
             self.log.write('errors:aborting')
             sys.exit()
 
-        self.log.write('main:course_name', self.layout['display_name'])
+        self.log.write('main:course_name', self.layout['name'])
 
     # Sequence iterator
-    def sequences(self):
-        for s in self.layout['sequences']:
-            yield s
+    def sections(self):
+        for sec in self.layout['sections']:
 
-    # Subsequence iterator
-    def subsequences(self, sequence):
-        for sub in sequence['subsequences']:
-            p = self.path+s['path'].rstrip('/')+'/'
-            s['files'] = [f for f in os.listdir(p) if os.path.isfile(f)]
-            yield s
+            # Applying meta modification to subsections
+            sec = self.overloadLayout(sec)
+
+            # Yielding to next step
+            yield sec
+
+    # Overloading subsequences
+    def overloadLayout(self, sec):
+        for sub in sec['subsections']:
+            for unit in sub['units']:
+                p = (self.path + 
+                     sec['directory'].rstrip('/')+'/' +
+                     sub['directory'].rstrip('/')+'/' +
+                     unit['path'].rstrip('.md')+'.md')
+
+                try:
+                    unit['file'] = open(p, 'r').read()
+                except:
+                    self.log.write('errors:file_not_found', p)
+                    sys.exit()
+        return sec
