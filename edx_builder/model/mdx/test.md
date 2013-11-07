@@ -1,5 +1,5 @@
 * * *
-component:txt
+component: txt
 name: Echec de la politique
 
 #Titre en Markdown
@@ -10,7 +10,7 @@ name: Echec de la politique
 * * *
 
 * * *
-component:video
-url:test
+component: video
+url: test
 
 * * * 

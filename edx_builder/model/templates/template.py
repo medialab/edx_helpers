@@ -28,11 +28,11 @@ class XMLTemplate(object):
         return h
 
     def compile(self):
-        pass
+        return etree.tostring(self.root, pretty_print=True)
 
     def __setMetas(self, metas):
         for m in metas:
             self.root.set(m, metas[m])
 
     def __repr__(self):
-        return etree.tostring(self.root, pretty_print=True)
+        return self.compile()

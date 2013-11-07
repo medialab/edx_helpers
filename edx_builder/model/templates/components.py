@@ -13,10 +13,34 @@ from lxml import etree
 from template import XMLTemplate
 from model.tools.hasher import hashid
 
-# Html Components
-#================
-class HtmlXMLTemplate(XMLTemplate):
-    pass
+class Component(XMLTemplate):
 
-class VideoXMLTemplate(XMLTemplate):
-    pass
+    def __init__(self, id, data):
+        self.id = id
+        self.data = data
+        self.process()
+        self.parse()
+
+class HtmlXMLTemplate(Component):
+
+    # Properties
+    html = None
+    
+    def process(self):
+        self.root = etree.Element('html')
+        self.root.set('filename', self.id)
+
+        print self
+
+    def parse(self):
+        pass
+
+class VideoXMLTemplate(Component):
+    
+    def process(self):
+        self.root = etree.Element('video')
+
+        print self
+
+    def parse(self):
+        pass

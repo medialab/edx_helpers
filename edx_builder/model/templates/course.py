@@ -12,6 +12,7 @@
 from template import XMLTemplate
 from chapter import ChapterXMLTemplate
 
+
 # AKA Whole Course
 class CourseXMLTemplate(XMLTemplate):
 

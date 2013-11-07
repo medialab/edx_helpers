@@ -1,6 +1,6 @@
 import markdown
 import re
-from mdx_scribd import ScribdExtension
+from scribd import ScribdExtension
 
 ext = ScribdExtension()
 

@@ -12,6 +12,7 @@
 from template import XMLTemplate
 from vertical import VerticalXMLTemplate
 
+
 # AKA Subsection
 class SequentialXMLTemplate(XMLTemplate):
 

@@ -13,6 +13,7 @@ from template import XMLTemplate
 from components import HtmlXMLTemplate, VideoXMLTemplate
 from model.tools.unit_parser import parse_unit
 
+
 # AKA Unit
 class VerticalXMLTemplate(XMLTemplate):
 
@@ -45,5 +46,7 @@ class VerticalXMLTemplate(XMLTemplate):
             # Adding component to xml
             h = self.addChild(component['type'], component['data'])
 
-            # Adding either video, either html component
-            
+            # Adding components to data
+            self.components.append(
+                self.components_types[component['type']](h, component['data'])
+            )
