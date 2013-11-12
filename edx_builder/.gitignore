@@ -12,6 +12,7 @@ __pycache__
 logs/
 *.log
 
+# Testing files and default folders
 output
-
 TODO.md
+2014_Spring
