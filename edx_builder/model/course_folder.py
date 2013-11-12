@@ -19,7 +19,7 @@ from colifrapy.tools.utilities import normalize_path
 # Main Class
 #===========
 class CourseFolder(Model):
-    
+
     # Properties
     path = None
     layout = None
@@ -53,7 +53,7 @@ class CourseFolder(Model):
     def overloadLayout(self, sec):
         for sub in sec['subsections']:
             for unit in sub['units']:
-                p = (self.path + 
+                p = (self.path +
                      sec['directory'].rstrip('/')+'/' +
                      sub['directory'].rstrip('/')+'/' +
                      unit['path'].rstrip('.md')+'.md')

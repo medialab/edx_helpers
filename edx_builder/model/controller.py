@@ -16,6 +16,7 @@ from colifrapy.tools.utilities import normalize_path
 from course_folder import CourseFolder
 from templates.course import CourseXMLTemplate
 
+
 # Main Class
 #===========
 class Controller(Model):

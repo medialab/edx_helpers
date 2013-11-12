@@ -9,9 +9,11 @@
 
 # Dependencies
 #=============
+import yaml
 from lxml import etree
 from template import XMLTemplate
 from model.tools.hasher import hashid
+
 
 class Component(XMLTemplate):
 
@@ -21,26 +23,33 @@ class Component(XMLTemplate):
         self.process()
         self.parse()
 
+        print self
+
+
 class HtmlXMLTemplate(Component):
 
     # Properties
     html = None
-    
+
     def process(self):
         self.root = etree.Element('html')
         self.root.set('filename', self.id)
 
-        print self
-
     def parse(self):
         pass
 
+
 class VideoXMLTemplate(Component):
-    
+
     def process(self):
         self.root = etree.Element('video')
 
-        print self
-
     def parse(self):
-        pass
+
+        # Retrieving given metadatas
+        metas = yaml.load(self.data)
+
+        # Allocating meta datas
+        self.root.set('youtube_id_1_0', metas['id'])
+        self.root.set('youtube', '1.00:%s' % metas['id'])
+        self.root.set('display_name', metas['name'])

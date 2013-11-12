@@ -12,9 +12,10 @@ ok
 
 * * *
 component: video
-url: test
+id: KL_v-y0AneE
+name: Test Video
 
-* * * 
+* * *
 
 
 * * *
