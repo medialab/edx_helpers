@@ -10,8 +10,10 @@
 # Dependencies
 #=============
 import yaml
+import markdown
 from lxml import etree
 from template import XMLTemplate
+from model.mdx.scribd import ScribdExtension
 from model.tools.hasher import hashid
 
 
@@ -23,23 +25,34 @@ class Component(XMLTemplate):
         self.process()
         self.parse()
 
-        print self
-
 
 class HtmlXMLTemplate(Component):
 
     # Properties
     html = None
+    directory = 'html'
 
     def process(self):
         self.root = etree.Element('html')
         self.root.set('filename', self.id)
 
     def parse(self):
-        pass
+        
+        # Retrieving name of component
+        name = yaml.load(self.data.splitlines()[0])['name']
+        self.root.set('display_name', name)
+
+        # Compiling markdown
+        self.html = markdown.markdown(
+            '\n'.join(self.data.splitlines()[1:]),
+            [ScribdExtension()]
+        )
 
 
 class VideoXMLTemplate(Component):
+
+    # Properties
+    directory = 'video'
 
     def process(self):
         self.root = etree.Element('video')

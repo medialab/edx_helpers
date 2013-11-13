@@ -7,18 +7,37 @@
 #   Organization : Sciences-Po Medialab
 #   Version : 0.1.0
 
-course:
-    advanced_modules: []
-    course_image: 'cover.png'
-    display_name: 'EdxBuilder Test Course'
-    start: '2013-10-28T11:00:00Z'
-    sequences:
-        - display_name: 'Sequence #1'
+advanced_modules: []
+course_image: 'cover.png'
+name: 'EdxBuilder Test Course'
+start: '2013-10-28T11:00:00Z'
+static: 'static'
+sections:
+    - name: 'Section #1'
+      start: '2013-10-28T12:00:00Z'
+      directory: 'section1'
+      subsections:
+        - name: 'Subsection #1-1'
           start: '2013-10-28T12:00:00Z'
-          subsequences:
-            - display_name: 'Subsequence #1'
-              start: '2013-10-28T12:00:00Z'
-              path: '/subsequence1'
-            - display_name: 'Subsequence #2'
-              start: '2013-10-28T12:00:00Z'
-              path: '/subsequence2'
+          directory: 'subsection1'
+          units:
+            - name: 'Unit 1-1-1'
+              path: 'unit1'
+            - name: 'Unit 1-1-2'
+              path: 'unit2'
+            - name: 'Unit 1-1-3'
+              path: 'unit3'
+            - name: 'Unit 1-1-4'
+              path: 'unit4'
+            - name: 'Unit 1-1-5'
+              path: 'unit5'
+        - name: 'Subsection #2-1'
+          start: '2013-10-28T12:00:00Z'
+          directory: 'subsection2'
+          units:
+            - name: 'Unit 1-1-1'
+              path: 'unit1'
+            - name: 'Unit 1-1-2'
+              path: 'unit2'
+            - name: 'Unit 1-1-3'
+              path: 'unit3'

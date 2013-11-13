@@ -31,7 +31,6 @@ class SequentialXMLTemplate(XMLTemplate):
         )
 
         self.computeUnits()
-        print self
 
     # Computing Units
     def computeUnits(self):

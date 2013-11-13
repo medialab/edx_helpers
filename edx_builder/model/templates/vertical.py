@@ -35,7 +35,6 @@ class VerticalXMLTemplate(XMLTemplate):
         )
 
         self.computeComponents()
-        print self
 
     # Computing Components
     def computeComponents(self):

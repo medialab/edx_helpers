@@ -31,7 +31,6 @@ class ChapterXMLTemplate(XMLTemplate):
         )
 
         self.computeSubsections()
-        print self
 
     # Computing Sequences
     def computeSubsections(self):

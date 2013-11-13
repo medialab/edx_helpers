@@ -14,6 +14,7 @@ main:
     retrieving: 'Retrieving course info in : {{path}}//INFO'
     test: 'Testing...//INFO'
     course_name: 'Treating course: "{{course_name}}"//INFO'
+    compiling: 'Compiling course to {{path}}//INFO'
 errors:
     aborting: 'Aborting...//WARNING'
     course_not_found: 'Course layout not found.//ERROR'

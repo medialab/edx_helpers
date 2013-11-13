@@ -15,6 +15,7 @@ from colifrapy import Model
 from colifrapy.tools.utilities import normalize_path
 from course_folder import CourseFolder
 from templates.course import CourseXMLTemplate
+from tools.compiler import Compiler
 
 
 # Main Class
@@ -32,12 +33,17 @@ class Controller(Model):
         folder = CourseFolder(self.opts.target)
 
         # Creating output folder
-        self.opts.output = normalize_path(self.opts.output, True)
-        if not os.path.exists(self.opts.output):
-            os.mkdir(self.opts.output)
+        output_path = normalize_path(self.opts.output, True)
+        if not os.path.exists(output_path):
+            os.mkdir(output_path)
 
         # Creating XML
         course = CourseXMLTemplate(folder)
+
+        # Compiling the course
+        self.log.write('main:compiling', output_path)
+        Compiler(course, output_path)
+
 
     # Testing
     def test(self):
