@@ -44,6 +44,8 @@ class Controller(Model):
         self.log.write('main:compiling', output_path)
         Compiler(course, output_path)
 
+        self.log.write('main:done')
+
 
     # Testing
     def test(self):

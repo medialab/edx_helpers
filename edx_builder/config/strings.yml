@@ -15,6 +15,7 @@ main:
     test: 'Testing...//INFO'
     course_name: 'Treating course: "{{course_name}}"//INFO'
     compiling: 'Compiling course to {{path}}//INFO'
+    done: 'Done!//INFO'
 errors:
     aborting: 'Aborting...//WARNING'
     course_not_found: 'Course layout not found.//ERROR'

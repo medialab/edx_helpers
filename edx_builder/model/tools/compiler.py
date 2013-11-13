@@ -11,7 +11,7 @@
 #=============
 import os
 import tarfile
-import StringIO
+import shutil
 
 
 # Main Class
@@ -35,7 +35,7 @@ class Compiler(object):
     
     def __init__(self, course, output_path):
 
-        # Creating arborescences
+        # Creating arborescence
         self.path = output_path+course.identifier+'/'
         try:
             os.mkdir(self.path)
@@ -48,7 +48,8 @@ class Compiler(object):
         self.files = {
             'about/effort.html': course.effort,
             'about/overview.html': course.overview,
-            'course/%s.xml' % course.identifier: course.compile()
+            'course/%s.xml' % course.identifier: course.compile(),
+            'course.xml': course.xml
         }
 
         # Big file loop
@@ -71,8 +72,12 @@ class Compiler(object):
             with open(self.path+path, 'w') as wf:
                 wf.write(data)
 
+        # Compressing
+        tar_path = '%s/%s.tar.gz' % (output_path, course.identifier)
+        tar = tarfile.open(tar_path, 'w:gz')
 
-        # self.tar = tarfile.open(output_path+'Course.tar.gz', 'w:gz')
+        tar.add(self.path, arcname=course.identifier)
+        tar.close()
 
-        # # Closing file
-        # self.tar.close()
+        # Cleaning
+        shutil.rmtree(self.path)

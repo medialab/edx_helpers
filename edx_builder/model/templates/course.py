@@ -21,13 +21,15 @@ class CourseXMLTemplate(XMLTemplate):
     sections = []
     overview = ''
     effort = ''
+    xml = ''
 
     def __init__(self, folder):
         self.folder = folder
-        self.static = folder.layout['static'] or 'static'
-        self.identifier = folder.layout['identifier'] or '2014_Spring'
-        
         ly = folder.layout
+
+        self.static = folder.static
+        self.identifier = ly.get('identifier') or '2014_Spring'
+        
         self.configure(
             'course',
             {
@@ -61,3 +63,11 @@ class CourseXMLTemplate(XMLTemplate):
 
         # Effort
         self.effort = self.folder.layout.get('effort') or '3:00'
+
+        # Course XML
+        course_root = etree.Element('course')
+        course_root.set('url_name', self.identifier)
+        course_root.set('org', self.folder.layout['organization'])
+        course_root.set('course', self.folder.layout['number'])
+
+        self.xml = etree.tostring(course_root, pretty_print=True)

@@ -10,6 +10,9 @@
 advanced_modules: []
 course_image: 'cover.png'
 name: 'EdxBuilder Test Course'
+identifier: '2014_Fall'
+organization: 'UniversityX'
+number: 'TS101'
 start: '2013-10-28T11:00:00Z'
 static: 'static'
 sections:

@@ -37,6 +37,9 @@ class CourseFolder(Model):
             self.log.write('errors:aborting')
             sys.exit()
 
+        # Static file path
+        self.static = self.path+self.layout.get('static', 'static')
+
         self.log.write('main:course_name', self.layout['name'])
 
     # Sequence iterator
