@@ -3,8 +3,6 @@ Edx Video Transcripts
 
 **Transcription pour les vidéos YouTube**
 
-**Marche à suivre**
-
 Partant du principe que vous disposez du sous-titrage de la vidéo au format srt.
 
 Récupération du script python
@@ -25,7 +23,7 @@ Le fichier **your.srt.sjson** sera alors créé dans ce même dossier.
 
 Rattachement à la vidéo dans la plateforme EDX
 ----------------------------------------------
-Renommez votre fichier sjon de la sorte:
+Renommez votre fichier sjon de la sorte
 
     subs_YOUTUBEID.srt.sjon
 
