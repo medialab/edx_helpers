@@ -2,6 +2,7 @@ Edx Video Transcripts
 =====================
 
 **Transcription pour les vidéos YouTube**
+
 **Marche à suivre**
 
 Partant du principe que vous disposez du sous-titrage de la vidéo au format srt.
@@ -9,7 +10,7 @@ Partant du principe que vous disposez du sous-titrage de la vidéo au format srt
 Récupération du script python
 -----------------------------
 ```bash
-git clone https://github.com/edx/edx-tools/tree/master/captions
+git clone https://github.com/edx/edx-tools.git
 ```
 
 Conversion du fichier srt vers le sjson
@@ -20,7 +21,7 @@ mv /path/to/your.srt your.srt
 python srt_to_sjson.py your.srt
 ```
 
-Le fichier your.srt.sjson sera alors créé dans ce même dossier.
+Le fichier **your.srt.sjson** sera alors créé dans ce même dossier.
 
 Rattachement à la vidéo dans la plateforme EDX
 ----------------------------------------------
