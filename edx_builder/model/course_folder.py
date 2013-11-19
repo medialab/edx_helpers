@@ -38,7 +38,7 @@ class CourseFolder(Model):
             sys.exit()
 
         # Static file path
-        self.static = self.path+self.layout.get('static', 'static')
+        self.static = self.path + self.layout.get('static', 'static') + '/'
 
         self.log.write('main:course_name', self.layout['name'])
 

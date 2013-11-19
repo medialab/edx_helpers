@@ -72,6 +72,11 @@ class Compiler(object):
             with open(self.path+path, 'w') as wf:
                 wf.write(data)
 
+        # Copying static files
+        if os.path.isdir(course.static):
+            for sf in [f for f in os.listdir(course.static) if os.path.isfile(course.static + f)]:
+                shutil.copyfile(course.static + sf, self.path + 'static/' + sf)
+
         # Compressing
         tar_path = '%s/%s.tar.gz' % (output_path, course.identifier)
         tar = tarfile.open(tar_path, 'w:gz')
