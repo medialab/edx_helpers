@@ -39,8 +39,11 @@ class HtmlXMLTemplate(Component):
     def parse(self):
         
         # Retrieving name of component
-        name = yaml.load(self.data.splitlines()[0])['name'].strip()
-        self.root.set('display_name', name)
+        try:
+            name = yaml.load(self.data.splitlines()[0])['name'].strip()
+            self.root.set('display_name', name)
+        except:
+            pass
 
         # Compiling markdown
         self.html = markdown.markdown(

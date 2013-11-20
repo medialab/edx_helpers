@@ -12,6 +12,7 @@
 import os
 import sys
 import yaml
+import zipfile
 from colifrapy import Model
 from colifrapy.tools.utilities import normalize_path
 
