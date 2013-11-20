@@ -39,7 +39,7 @@ class HtmlXMLTemplate(Component):
     def parse(self):
         
         # Retrieving name of component
-        name = yaml.load(self.data.splitlines()[0])['name']
+        name = yaml.load(self.data.splitlines()[0])['name'].strip()
         self.root.set('display_name', name)
 
         # Compiling markdown
@@ -63,6 +63,6 @@ class VideoXMLTemplate(Component):
         metas = yaml.load(self.data)
 
         # Allocating meta datas
-        self.root.set('youtube_id_1_0', metas['id'])
-        self.root.set('youtube', '1.00:%s' % metas['id'])
-        self.root.set('display_name', metas['name'])
+        self.root.set('youtube_id_1_0', metas['id'].strip())
+        self.root.set('youtube', '1.00:%s' % metas['id'].strip())
+        self.root.set('display_name', metas['name'].strip())
