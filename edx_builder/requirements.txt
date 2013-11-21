@@ -5,3 +5,4 @@ git+https://github.com/Yomguithereal/colifrapy.git
 Markdown
 lxml
 pyyaml
+python-scribd
