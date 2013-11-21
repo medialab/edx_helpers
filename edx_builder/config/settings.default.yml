@@ -22,3 +22,9 @@ logger:
     strings: 'config/strings.yml'
     flavor: 'elegant'
     exceptions: False
+
+# Generic Settings
+settings:
+    scribd:
+        key: 'your-scribd-key'
+        secret: 'your-scribd-secret'

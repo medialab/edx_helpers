@@ -18,3 +18,11 @@ name: Bleu de bleu
 fafa *italic*
 
 * * *
+
+* * *
+component: discussion
+category: Category_name
+subcategory: Subcategory_name
+name: Name in hover
+
+* * *

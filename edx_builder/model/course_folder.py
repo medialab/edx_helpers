@@ -58,9 +58,9 @@ class CourseFolder(Model):
         for sub in sec['subsections']:
             for unit in sub['units']:
                 p = (self.path +
-                     sec['directory'].rstrip('/')+'/' +
-                     sub['directory'].rstrip('/')+'/' +
-                     unit['path'].rstrip('.md')+'.md')
+                     sec['directory'].rstrip('/') + '/' +
+                     sub['directory'].rstrip('/') + '/' +
+                     unit['path'].rstrip('.md') + '.md')
 
                 try:
                     unit['file'] = open(p, 'r').read()

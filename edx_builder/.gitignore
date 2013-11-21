@@ -4,6 +4,9 @@
 # Clumsy Mac Files
 .DS_Store
 
+# Settings
+config/settings.yml
+
 # Python Cache
 __pycache__
 *.pyc

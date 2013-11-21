@@ -23,6 +23,7 @@ class Compiler(object):
         'about',
         'chapter',
         'course',
+        'discussion',
         'html',
         'info',
         'policies',

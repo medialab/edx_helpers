@@ -13,7 +13,7 @@ import yaml
 import markdown
 from lxml import etree
 from template import XMLTemplate
-from model.mdx.scribd import ScribdExtension
+from model.mdx import ScribdExtension, ImageExtension, LinkExtension
 from model.tools.hasher import hashid
 
 
@@ -48,7 +48,11 @@ class HtmlXMLTemplate(Component):
         # Compiling markdown
         self.html = markdown.markdown(
             '\n'.join(self.data.splitlines()[1:]),
-            [ScribdExtension()]
+            [
+                ScribdExtension(),
+                ImageExtension(),
+                LinkExtension()
+            ]
         )
 
 
@@ -69,3 +73,27 @@ class VideoXMLTemplate(Component):
         self.root.set('youtube_id_1_0', metas['id'].strip())
         self.root.set('youtube', '1.00:%s' % metas['id'].strip())
         self.root.set('display_name', metas['name'].strip())
+
+
+class DiscussionXMLTemplate(Component):
+
+    # Properties
+    directory = 'discussion'
+
+    def process(self):
+        self.root = etree.Element('discussion')
+
+    def parse(self):
+
+        # Retrieving given metadatas
+        metas = yaml.load(self.data) 
+
+        # Allocating meta datas
+        if metas.get('name') is not None:
+            self.root.set('display_name', metas['name'].strip())
+
+        if metas.get('category') is not None:
+            self.root.set('discussion_category', metas['category'].strip())
+
+        if metas.get('subcategory') is not None:
+            self.root.set('discussion_target', metas['subcategory'].strip())
