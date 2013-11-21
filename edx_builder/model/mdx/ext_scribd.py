@@ -12,6 +12,7 @@
 from markdown.util import etree
 from markdown.extensions import Extension
 from markdown.inlinepatterns import Pattern
+from model.tools.scribd_client import ScribdClient
 
 
 # Pattern
@@ -21,6 +22,9 @@ class PDFPattern(Pattern):
     # Building the embed
     def handleMatch(self, m):
 
+        # Retrieving client
+        client = ScribdClient()
+
         # Creating the basis of the iframe
         el = etree.Element('iframe')
         el.set('class', 'scribd_iframe_embed')
@@ -29,7 +33,7 @@ class PDFPattern(Pattern):
         el.set('width', '820')
         el.set('height', '546')
         el.set('frameborder', '0')
-        el.set('src', '//www.scribd.com/embeds/185064084/content?start_page=1&view_mode=scroll&access_key=key-2oshwm8ft80hr8f9r6gq&show_recommendations=false')
+        el.set('src', '')
 
         # Returning
         return el

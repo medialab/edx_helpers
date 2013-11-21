@@ -16,6 +16,7 @@ from colifrapy.tools.utilities import normalize_path
 from course_folder import CourseFolder
 from templates.course import CourseXMLTemplate
 from tools.compiler import Compiler
+from tools.scribd_client import ScribdClient
 
 
 # Main Class
@@ -31,6 +32,13 @@ class Controller(Model):
 
         # Parsing folder
         folder = CourseFolder(self.opts.target)
+
+        # Initializing scribd client
+        scribd_client = ScribdClient()
+        scribd_client.config(
+            self.settings.scribd['key'],
+            self.settings.scribd['secret']
+        )
 
         # Creating output folder
         output_path = normalize_path(self.opts.output, True)
