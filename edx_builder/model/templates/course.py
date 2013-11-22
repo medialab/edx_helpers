@@ -9,7 +9,7 @@
 
 # Dependencies
 #=============
-from markdown.util import etree
+from lxml import etree
 from template import XMLTemplate
 from chapter import ChapterXMLTemplate
 
@@ -59,7 +59,7 @@ class CourseXMLTemplate(XMLTemplate):
         # About
         overview_root = etree.Element('section')
         overview_root.set('class', 'about')
-        self.overview = etree.tostring(overview_root)
+        self.overview = etree.tostring(overview_root, pretty_print=True)
 
         # Effort
         self.effort = self.folder.layout.get('effort') or '3:00'
@@ -70,4 +70,4 @@ class CourseXMLTemplate(XMLTemplate):
         course_root.set('org', self.folder.layout['organization'])
         course_root.set('course', self.folder.layout['number'])
 
-        self.xml = etree.tostring(course_root)
+        self.xml = etree.tostring(course_root, pretty_print=True)

@@ -11,7 +11,7 @@
 #=============
 import yaml
 import markdown
-from markdown.util import etree
+from lxml import etree
 from template import XMLTemplate
 from model.mdx import ScribdExtension, ImageExtension, LinkExtension
 from model.tools.hasher import hashid
