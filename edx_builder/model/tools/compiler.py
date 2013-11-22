@@ -37,7 +37,7 @@ class Compiler(object):
     def __init__(self, course, output_path):
 
         # Creating arborescence
-        self.path = output_path+course.identifier+'/'
+        self.path = output_path+course.identifier + os.sep
         try:
             os.mkdir(self.path)
             for d in self.arborescence:
@@ -79,7 +79,7 @@ class Compiler(object):
                 shutil.copyfile(course.static + sf, self.path + 'static/' + sf)
 
         # Compressing
-        tar_path = '%s/%s.tar.gz' % (output_path, course.identifier)
+        tar_path = '%s%s%s.tar.gz' % (output_path, os.sep, course.identifier)
         tar = tarfile.open(tar_path, 'w:gz')
 
         tar.add(self.path, arcname=course.identifier)

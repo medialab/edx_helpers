@@ -39,7 +39,7 @@ class CourseFolder(Model):
             sys.exit()
 
         # Static file path
-        self.static = self.path + self.layout.get('static', 'static') + '/'
+        self.static = self.path + self.layout.get('static', 'static') + os.sep
 
         self.log.write('main:course_name', self.layout['name'])
 
@@ -54,12 +54,13 @@ class CourseFolder(Model):
             yield sec
 
     # Overloading subsequences
+    # TODO: use path.join rather than this mess
     def overloadLayout(self, sec):
         for sub in sec['subsections']:
             for unit in sub['units']:
                 p = (self.path +
-                     sec['directory'].rstrip('/') + '/' +
-                     sub['directory'].rstrip('/') + '/' +
+                     sec['directory'].rstrip(os.sep) + os.sep +
+                     sub['directory'].rstrip(os.sep) + os.sep +
                      unit['path'].rstrip('.md') + '.md')
 
                 try:
