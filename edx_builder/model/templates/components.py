@@ -40,7 +40,7 @@ class HtmlXMLTemplate(Component):
         
         # Retrieving name of component
         try:
-            name = yaml.load(self.data.splitlines()[0])['name'].strip()
+            name = yaml.load(self.data.splitlines()[0])['name']
             self.root.set('display_name', name)
         except:
             pass
@@ -70,9 +70,9 @@ class VideoXMLTemplate(Component):
         metas = yaml.load(self.data)
 
         # Allocating meta datas
-        self.root.set('youtube_id_1_0', metas['id'].strip())
-        self.root.set('youtube', '1.00:%s' % metas['id'].strip())
-        self.root.set('display_name', metas['name'].strip())
+        self.root.set('youtube_id_1_0', metas['id'])
+        self.root.set('youtube', '1.00:%s' % metas['id'])
+        self.root.set('display_name', metas['name'])
 
 
 class DiscussionXMLTemplate(Component):
@@ -90,10 +90,10 @@ class DiscussionXMLTemplate(Component):
 
         # Allocating meta datas
         if metas.get('name') is not None:
-            self.root.set('display_name', metas['name'].strip())
+            self.root.set('display_name', metas['name'])
 
         if metas.get('category') is not None:
-            self.root.set('discussion_category', metas['category'].strip())
+            self.root.set('discussion_category', metas['category'])
 
         if metas.get('subcategory') is not None:
-            self.root.set('discussion_target', metas['subcategory'].strip())
+            self.root.set('discussion_target', metas['subcategory'])

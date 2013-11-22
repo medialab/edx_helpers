@@ -20,7 +20,7 @@ def parse_unit(file_string):
     components = []
     for m in matches:
         lines = m.splitlines()
-        ctype = yaml.load(lines[1])['component'].strip()
+        ctype = yaml.load(lines[1])['component']
         components.append({
             'type': ctype,
             'data': '\n'.join(lines[2:])
