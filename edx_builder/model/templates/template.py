@@ -9,7 +9,7 @@
 
 # Dependencies
 #=============
-from lxml import etree
+from markdown.util import etree
 from model.tools.hasher import hashid
 
 
@@ -28,7 +28,7 @@ class XMLTemplate(object):
         return h
 
     def compile(self):
-        return etree.tostring(self.root, pretty_print=True)
+        return etree.tostring(self.root)
 
     def __setMetas(self, metas):
         for m in metas:
