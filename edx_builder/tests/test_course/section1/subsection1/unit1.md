@@ -12,11 +12,10 @@ ok
 
 * * *
 component: video
-id: KL_v-y0AneE
+id: KL_v-y0AneEgit stat
 name: Test Video
 
 * * *
-
 
 * * *
 component: html

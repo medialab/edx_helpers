@@ -22,8 +22,11 @@ class PDFPattern(Pattern):
     # Building the embed
     def handleMatch(self, m):
 
-        # Retrieving client
+        # Retrieving client and document metas
         client = ScribdClient()
+        url = m.group(2)
+        doc_id = url.split('/doc/')[1].split('/')[0]
+        meta = client.get(doc_id)
 
         # Creating the basis of the iframe
         el = etree.Element('iframe')
@@ -33,7 +36,14 @@ class PDFPattern(Pattern):
         el.set('width', '820')
         el.set('height', '546')
         el.set('frameborder', '0')
-        el.set('src', '')
+
+        # Forging the iframe url
+        src = str('//www.scribd.com/embeds/%s/content?start_page=1'
+                  '&view_mode=scroll'
+                  '&show_recommendations=false'
+                  '&access_key=%s' % (doc_id, meta['access_key']))
+
+        el.set('src', src)
 
         # Returning
         return el
