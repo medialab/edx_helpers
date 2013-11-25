@@ -24,6 +24,6 @@ name: Bleu de bleu
 #Fous du gaag
 fafa *italic*
 
-[[pdf:http://www.scribd.com/doc/185064084/melissa-pdf?secret_password=11lqxaqi8mms87f27ajw]]
+[[pdf:http://www.scribd.com/doc/184845262/Bertler-125-year-ice-core-pdf]]
 
 * * *

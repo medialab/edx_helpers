@@ -9,8 +9,8 @@
 
 # Dependencies
 #=============
+import uuid
 from lxml import etree
-from model.tools.hasher import hashid
 
 
 class XMLTemplate(object):
@@ -20,7 +20,7 @@ class XMLTemplate(object):
         self.__setMetas(metas)
 
     def addChild(self, tag, feed):
-        h = hashid(feed)
+        h = uuid.uuid4().hex
         se = etree.Element(tag)
         se.set('url_name', h)
         self.root.append(se)
