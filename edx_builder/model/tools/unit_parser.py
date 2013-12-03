@@ -15,6 +15,9 @@ def parse_unit(file_string):
     components = []
 
     for component in file_string.split('* * *'):
+        if component.strip() == '':
+            raise Exception('UnitParser::EmptyComponent')
+
         index, ctype = parse_header(component)
 
         remaining_lines = component.splitlines()[index:]

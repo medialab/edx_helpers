@@ -27,7 +27,6 @@ class CourseXMLTemplate(XMLTemplate):
         self.folder = folder
         ly = folder.layout
 
-        self.static = folder.static
         self.identifier = ly.get('identifier') or '2014_Spring'
         
         self.configure(

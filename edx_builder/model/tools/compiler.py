@@ -74,9 +74,17 @@ class Compiler(object):
                 wf.write(data)
 
         # Copying static files
-        if os.path.isdir(course.static):
-            for sf in [f for f in os.listdir(course.static) if os.path.isfile(course.static + f)]:
-                shutil.copyfile(course.static + sf, self.path + 'static/' + sf)
+        static_directory = course.folder.static
+
+        if course.folder.zipped:
+            sfs = [f for f in course.folder.zip_handle.namelist() if static_directory in f.rstrip(static_directory)]
+            for sf in sfs:
+                with open(self.path + 'static/' + sf.split('static/')[-1], 'w+') as wf:
+                    wf.write(course.folder.zip_handle.read(sf))
+        else:
+            if os.path.isdir(static_directory):
+                for sf in [f for f in os.listdir(static_directory) if os.path.isfile(static_directory + f)]:
+                    shutil.copyfile(static_directory + sf, self.path + 'static/' + sf)
 
         # Compressing
         tar_path = '%s%s%s.tar.gz' % (output_path, os.sep, course.identifier)

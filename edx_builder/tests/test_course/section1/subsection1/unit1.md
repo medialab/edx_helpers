@@ -30,7 +30,6 @@ fafa *italic*
 
 [Want to know what is there?](http://google.com)
 
-[[pdf:http://www.scribd.com/doc/184845262/Bertler-125-year-ice-core-pdf]]
 
 * * *
 component: html
