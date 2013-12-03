@@ -44,4 +44,4 @@ class LinkExtension(Extension):
         md.inlinePatterns.add(name, pattern, "<reference")
 
     def extendMarkdown(self, md, md_globals):
-        self.add_inline(md, 'image', LinkOverridenPattern, LINK_RE)
+        self.add_inline(md, 'link', LinkOverridenPattern, LINK_RE)

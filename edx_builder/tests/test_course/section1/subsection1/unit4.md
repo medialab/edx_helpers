@@ -1,4 +1,3 @@
-* * *
 component: html
 name: Echec de la politique
 
@@ -10,7 +9,6 @@ ok
 
 * * *
 
-* * *
 component: html
 name: Bleu de bleu
 
@@ -18,11 +16,7 @@ name: Bleu de bleu
 fafa *italic*
 
 * * *
-
-* * *
 component: discussion
 category: Category_name
 subcategory: Subcategory_name
 name: Name in hover
-
-* * *

@@ -9,22 +9,44 @@
 
 # Dependencies
 #=============
-import re
 import yaml
 
-UNIT_RE = re.compile('\* \* \*(.*?)\* \* \*', re.DOTALL)
-
 def parse_unit(file_string):
-    matches = re.findall(UNIT_RE, file_string)
-
     components = []
-    for m in matches:
-        lines = m.splitlines()
-        ctype = yaml.load(lines[1])['component']
+
+    for component in file_string.split('* * *'):
+        index, ctype = parse_header(component)
+
+        remaining_lines = component.splitlines()[index:]
+
+        if ctype == 'html':
+            metas = parse_markdown(remaining_lines)
+        else:
+            metas = parse_yaml(remaining_lines)
+
         components.append({
             'type': ctype,
-            'data': '\n'.join(lines[2:])
+            'metas': metas
         })
 
     return components
 
+
+def parse_header(component):
+
+    # Getting the first yaml line
+    index = 0
+    for line in (i for i in component.splitlines()):
+        if ':' in line:
+            return index + 1, yaml.load(line)['component']
+        index += 1
+    raise Exception('UnitParser::HeaderNotFound')
+
+def parse_yaml(lines):
+    return yaml.load('\n'.join(lines))
+
+def parse_markdown(lines):
+    return {
+        'name': yaml.load(lines[0])['name'],
+        'text': '\n'.join(lines[1:]).strip('\n')
+    }

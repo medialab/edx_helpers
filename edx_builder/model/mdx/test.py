@@ -1,17 +1,17 @@
 import markdown
 import pprint
 import re
-from ext_scribd import ScribdExtension
+# from ext_scribd import ScribdExtension
 from ext_image import ImageExtension
 from ext_link import LinkExtension
 
-ext = ScribdExtension()
+# ext = ScribdExtension()
 ext2 = ImageExtension()
 ext3 = LinkExtension()
 
-print markdown.markdown(u'[[pdf:http://www.scribd.com/doc/185064084/melissa-pdf]]', [ext])
+# print markdown.markdown(u'[[pdf:http://www.scribd.com/doc/185064084/melissa-pdf]]', [ext])
 print markdown.markdown(u'![description](http://test.com)', [ext2])
-print markdown.markdown(u'![description:left](http://test.com)', [ext2])
+print markdown.markdown(u'![description:left](http://test.com)\ntestde text', [ext3, ext2])
 print markdown.markdown(u'![description:right](http://test.com)', [ext2])
 print markdown.markdown(u'[link text](http://test.com)', [ext3])
 

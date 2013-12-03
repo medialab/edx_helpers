@@ -1,4 +1,3 @@
-* * *
 component: html
 name: Echec de la politique
 
@@ -7,5 +6,3 @@ name: Echec de la politique
 ok
 
 ##Titre de niveau 2
-
-* * *

@@ -36,24 +36,19 @@ class HtmlXMLTemplate(Component):
         self.root.set('filename', self.id)
 
     def parse(self):
-        
-        # Retrieving name of component
-        try:
-            name = yaml.load(self.data.splitlines()[0])['name']
-            self.root.set('display_name', name)
-        except:
-            pass
+
+        # Setting name of component
+        self.root.set('display_name', self.data['name'])
 
         # Compiling markdown
         self.html = markdown.markdown(
-            '\n'.join(self.data.splitlines()[1:]),
-            [
-                ScribdExtension(),
+            self.data['text'],
+            extensions=[
+                LinkExtension(),
                 ImageExtension(),
-                LinkExtension()
+                ScribdExtension()
             ]
         )
-
 
 class VideoXMLTemplate(Component):
 
@@ -65,13 +60,10 @@ class VideoXMLTemplate(Component):
 
     def parse(self):
 
-        # Retrieving given metadatas
-        metas = yaml.load(self.data)
-
         # Allocating meta datas
-        self.root.set('youtube_id_1_0', metas['id'])
-        self.root.set('youtube', '1.00:%s' % metas['id'])
-        self.root.set('display_name', metas['name'])
+        self.root.set('youtube_id_1_0', self.data['id'])
+        self.root.set('youtube', '1.00:%s' % self.data['id'])
+        self.root.set('display_name', self.data['name'])
 
 
 class DiscussionXMLTemplate(Component):
@@ -84,15 +76,12 @@ class DiscussionXMLTemplate(Component):
 
     def parse(self):
 
-        # Retrieving given metadatas
-        metas = yaml.load(self.data) 
-
         # Allocating meta datas
-        if metas.get('name') is not None:
-            self.root.set('display_name', metas['name'])
+        if self.data.get('name') is not None:
+            self.root.set('display_name', self.data['name'])
 
-        if metas.get('category') is not None:
-            self.root.set('discussion_category', metas['category'])
+        if self.data.get('category') is not None:
+            self.root.set('discussion_category', self.data['category'])
 
-        if metas.get('subcategory') is not None:
-            self.root.set('discussion_target', metas['subcategory'])
+        if self.data.get('subcategory') is not None:
+            self.root.set('discussion_target', self.data['subcategory'])

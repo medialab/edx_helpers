@@ -37,7 +37,7 @@ class ChapterXMLTemplate(XMLTemplate):
         for sub in self.data['subsections']:
 
             # Adding to root element
-            h = self.addChild('sequential', sub['name'])
+            h = self.addChild('sequential')
             
             # Initialize sequential templates
             self.subsections.append(SequentialXMLTemplate(h, sub))

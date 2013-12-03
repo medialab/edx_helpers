@@ -48,7 +48,7 @@ class CourseXMLTemplate(XMLTemplate):
         for sec in self.folder.sections():
 
             # Adding to root element
-            h = self.addChild('chapter', sec['name'])
+            h = self.addChild('chapter')
 
             # Initialize sequential templates
             self.sections.append(ChapterXMLTemplate(h, sec))

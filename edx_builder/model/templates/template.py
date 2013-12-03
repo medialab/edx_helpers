@@ -19,7 +19,7 @@ class XMLTemplate(object):
         self.root = etree.Element(element)
         self.__setMetas(metas)
 
-    def addChild(self, tag, feed):
+    def addChild(self, tag):
         h = uuid.uuid4().hex
         se = etree.Element(tag)
         se.set('url_name', h)

@@ -44,9 +44,9 @@ class VerticalXMLTemplate(XMLTemplate):
         for component in parse_unit(self.data['file']):
 
             # Adding component to xml
-            h = self.addChild(component['type'], component['data'])
+            h = self.addChild(component['type'])
 
             # Adding components to data
             self.components.append(
-                self.components_types[component['type']](h, component['data'])
+                self.components_types[component['type']](h, component['metas'])
             )
