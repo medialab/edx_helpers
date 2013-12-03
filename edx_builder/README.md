@@ -38,7 +38,7 @@ To compile a folder or a zip file, simply run the following command
 python edx_builder.py build [path/to/folder-or-zipfile]
 ```
 
-It will compile to an **output/** folder. If you want to specify the output directory use the following option
+It will compile to an *output/* folder. If you want to specify the output directory use the following option
 
 ```bash
 python edx_builder.py build [path/to/folder-or-zipfile] -o/--output {output/directory}
@@ -56,6 +56,19 @@ To be properly compiled, the processed folder must have those three requisites
 1. A YAML configuration file for the course named **course_layout.yml** at the root of the folder.
 2. A **static** folder (default name), holding every static file needed for your course (images, subtitles...).
 3. One folder per section containing one folder per subsection finally containing one markdown file per unit.
+
+Example
+
+    course_folder/
+        course.layout.yml
+        section1/
+            subsection1/
+                unit1.md
+                unit2.md
+            subsection2/
+                unit1.md
+                unit2.md
+        static/
 
 ##YAML Configuration File
 This is an example of what the **course_layout.yml** file may be
@@ -115,7 +128,7 @@ name: Political Failure
 
 ![image description](/static/image.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed blandit eros. Proin in elit lectus. Donec at felis urna. Cras gravida nunc mi, vel ultricies lectus mollis vel. Mauris ut magna mattis, semper tellus ac, sollicitudin lacus. Nam erat ante, facilisis id consequat quis, imperdiet a tellus. Quisque mauris turpis, pharetra eget nisl eu, luctus eleifend nisi. In volutpat orci vitae enim imperdiet dignissim. Aliquam ut odio pretium, euismod lectus ac, condimentum nisl. Sed mollis urna ut elit pretium lobortis. Morbi eu ante ligula. Ut mi tortor, ullamcorper sed blandit semper, pulvinar sit amet tellus.
+Lorem ipsum dolor sit amet.
 ```
 
 Example of whole unit
@@ -143,6 +156,12 @@ name: Political Failure
 ```
 
 ###Components
+Types supported:
+
+* html
+* video
+* discussion
+
 Every component **must** start with a header indicating at least its type (html, video or discussion) and some metadatas. It must be written in yaml style (key: value - precisely, spaces are important).
 
 ###Html component
@@ -163,8 +182,8 @@ name: Political Failure
 ###Video component
 A video component **must** have the following metadatas:
 
-1. A name {name}
-2. A Youtube id {youtube_id} (typically, on a youtube url like http://www.youtube.com/watch?v=98BIu9dpwHU, the id is this final part after ?v= --> "98BIu9dpwHU")
+1. *A name* **name**
+2. *A Youtube id* **youtube_id** (typically, on a youtube url like http://www.youtube.com/watch?v=98BIu9dpwHU, the id is this final part after ?v= --> "98BIu9dpwHU")
 
 Example
 
@@ -177,9 +196,9 @@ name: Test Video
 ###Discussion component
 A discussion component **must** have the following metadatas:
 
-1. A name {name}
-2. A category name {category_name} The name of the forum section holding the discussion.
-3. A subcategory_name {subcategory_name} The name of the forum subsection holding the discussion.
+1. *A name* **name**
+2. *A category name* **category_name** The name of the forum section holding the discussion.
+3. *A subcategory_name* **subcategory_name** The name of the forum subsection holding the discussion.
 
 Example
 
