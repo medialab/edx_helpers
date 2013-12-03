@@ -57,7 +57,7 @@ To be properly compiled, the processed folder must have those three requisites
 2. A **static** folder (default name), holding every static file needed for your course (images, subtitles...).
 3. One folder per section containing one folder per subsection finally containing one markdown file per unit.
 
-Example
+**Example**
 
     course_folder/
         course.layout.yml
@@ -71,7 +71,7 @@ Example
         static/
 
 ##YAML Configuration File
-This is an example of what the **course_layout.yml** file may be
+This is an **Example** of what the **course_layout.yml** file may be
 
 ```yaml
 advanced_modules: []
@@ -117,7 +117,7 @@ TODO: more documentation about this precise points.
 ##Writing a unit
 A unit, in the edx_builder format, is expressed by a single markdown file that holds every needed component separated by a line of three stars (* * *).
 
-Example of component
+**Example of component**
 
 ```markdown
 component: html
@@ -131,7 +131,7 @@ name: Political Failure
 Lorem ipsum dolor sit amet.
 ```
 
-Example of whole unit
+**Example of a whole unit**
 
 ```markdown
 component: html
@@ -167,7 +167,7 @@ Every component **must** start with a header indicating at least its type (html,
 ###Html component
 A html component **must** have a name metadata (this is the name displayed while hovering on the menu bar of edx in a subsection). After this name is given, write every needed piece of text in markdown.
 
-Example
+**Example**
 
 ```markdown
 component: html
@@ -185,7 +185,7 @@ A video component **must** have the following metadatas:
 1. *A name* **name**
 2. *A Youtube id* **youtube_id** (typically, on a youtube url like http://www.youtube.com/watch?v=98BIu9dpwHU, the id is this final part after ?v= --> "98BIu9dpwHU")
 
-Example
+**Example**
 
 ```markdown
 component: video
@@ -200,7 +200,7 @@ A discussion component **must** have the following metadatas:
 2. *A category name* **category_name** The name of the forum section holding the discussion.
 3. *A subcategory_name* **subcategory_name** The name of the forum subsection holding the discussion.
 
-Example
+**Example**
 
 ```markdown
 component: discussion
@@ -221,7 +221,7 @@ floating image
 separating component
 
 ##Help & Examples
-If you feel lost about folder structure and the custom mardown syntax we use here, visit the **tests/test_course** section of this repository to see an complete example.
+If you feel lost about folder structure and the custom mardown syntax we use here, visit the **tests/test_course** section of this repository to see an complete **Example**.
 
 ##Dependencies
 
