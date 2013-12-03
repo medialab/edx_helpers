@@ -1,3 +1,8 @@
+// Beware, refaire le sprite avec fond blanc aussi.
+// BEWARE !!!!!
+
+// plus la string blue highlight
+
 // lms/static/js/Markdown.Converter.js
 
 function _DoStabilo(text) {
