@@ -12,6 +12,7 @@
 from markdown.util import etree
 from markdown.extensions import Extension
 from markdown.inlinepatterns import LinkPattern, LINK_RE
+from model.tools.unit_index import UnitIndex
 
 
 # Pattern
@@ -21,14 +22,22 @@ class LinkOverridenPattern(LinkPattern):
     # Building the embed
     def handleMatch(self, m):
 
+        # Basics
+        text = m.group(2)
+        href = m.group(9)
+        jump = '/jump_to_id/' in href
+        index = UnitIndex()
+
         # Creating the url
         el = etree.Element('a')
-        el.text = m.group(2)
-        el.set('href', m.group(9))
-        el.set('target', '_blank')
+        el.text = text
 
-        # Safeguard against static ?
-        pass
+        if jump:
+            unit_path  = href.split('/jump_to_id/')[-1]
+            el.set('href', '/jump_to_id/' + index.get(unit_path))
+        else:
+            el.set('href', href)
+            el.set('target', '_blank')
 
         # Returning
         return el

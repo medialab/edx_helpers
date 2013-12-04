@@ -37,7 +37,7 @@ class SequentialXMLTemplate(XMLTemplate):
         for unit in self.data['units']:
 
             # Adding to root element
-            h = self.addChild('vertical')
+            h = self.addChild('vertical', unit['uuid'])
 
             # Initialize vertical templates
             self.units.append(VerticalXMLTemplate(h, unit))

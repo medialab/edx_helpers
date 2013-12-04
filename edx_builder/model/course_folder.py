@@ -11,10 +11,12 @@
 #=============
 import os
 import sys
+import uuid
 import yaml
 from zipfile import ZipFile
 from colifrapy import Model
 from colifrapy.tools.utilities import normalize_path
+from tools.unit_index import UnitIndex
 
 
 # Main Class
@@ -22,6 +24,9 @@ from colifrapy.tools.utilities import normalize_path
 class CourseFolder(Model):
 
     def __init__(self, path):
+
+        # Initializing unit index
+        self.index = UnitIndex()
 
         # Checking whether the course is zipped
         self.zipped = '.zip' in path
@@ -59,29 +64,39 @@ class CourseFolder(Model):
 
     # Sequence iterator
     def sections(self):
-        for sec in self.layout['sections']:
+        sections = []
 
-            # Applying meta modification to subsections
-            sec = self.overloadLayout(sec)
+        for sec in self.layout['sections']:
+            for sub in sec['subsections']:
+                for unit in sub['units']:
+                    p = os.path.join(
+                        sec['directory'].rstrip(os.sep),
+                        sub['directory'].rstrip(os.sep),
+                        unit['path'].rstrip('.md') + '.md'
+                    )
+
+                    try:
+                        unit['file'] = self.openPath(p)
+                    except Exception as e:
+                        print e
+                        self.log.write('errors:file_not_found', p)
+                        sys.exit()
+
+                    # Assigning a precise id to the unit
+                    unit['uuid'] = uuid.uuid4().hex
+
+                    # Indexing
+                    self.index.set(
+                        '%s/%s/%s' % (
+                            sec['directory'],
+                            sub['directory'],
+                            unit['path']
+                        ),
+                        unit['uuid']
+                    )
 
             # Yielding to next step
-            yield sec
+            sections.append(sec)
 
-    # Overloading subsequences
-    # TODO: use path.join rather than this mess
-    def overloadLayout(self, sec):
-        for sub in sec['subsections']:
-            for unit in sub['units']:
-                p = os.path.join(
-                    sec['directory'].rstrip(os.sep),
-                    sub['directory'].rstrip(os.sep),
-                    unit['path'].rstrip('.md') + '.md'
-                )
-
-                try:
-                    unit['file'] = self.openPath(p)
-                except Exception as e:
-                    print e
-                    self.log.write('errors:file_not_found', p)
-                    sys.exit()
-        return sec
+        # Returning the modified version
+        return sections
