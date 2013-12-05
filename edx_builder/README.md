@@ -206,7 +206,7 @@ A discussion component **must** have the following metadatas:
 
 **Example**
 
-```markdown
+```
 component: discussion
 category: Category_name
 subcategory: Subcategory_name
@@ -215,52 +215,65 @@ name: Name in hover
 
 ##Markdown Syntax Subset
 
-titles bold italic images link
-
 ###Standard Markdown Elements
 The most common markdown elements used for the html components are the following:
 
 ####Titles
 
-  #Level 1 Title
-  ##Level 2 Title
-  ###Level 3 Title
+```
+#Level 1 Title
+##Level 2 Title
+###Level 3 Title
+```
 
 ####Bold & Italic
 
-  *italic text*
-  **bold text**
+```
+*italic text*
+**bold text**
+```
 
 ####Images and links
 
-  ![image description](http://link/to/the/image.png)
-  [link description](http://any/url)
+```
+![image description](http://link/to/the/image.png)
+[link description](http://any/url)
+```
 
 ###Custom Markdown Elements
 
 ####Component separator
 
-  * * *
+```
+* * *
+```
 
 ####Scrib iframe
 
-  [[pdf:http://www.scribd.com/doc/185064084/melissa-pdf]]
+```
+[[pdf:http://www.scribd.com/doc/185064084/melissa-pdf]]
+```
 
 ####Floating image
 
-  ![image description:left](http://link/to/the/image.png)
-  ![image description:right](http://link/to/the/image.png)
+```
+![image description:left](http://link/to/the/image.png)
+![image description:right](http://link/to/the/image.png)
+```
 
 ####Static and jump link
 Leading slashes **are** important.
 
+```
+[link description](/static/name_of_the_static_file.pdf)
+![image description](/static/name_of_the_static_image.png)
+```
 
-  [link description](/static/name_of_the_static_file.pdf)
-  ![image description](/static/name_of_the_static_image.png)
+To link toward another course's unit, link toward the unit identifier as stated in the yaml course layout.
 
-Do link toward another course's unit, link toward the unit identifier as stated in the yaml course layout.
-
-  [linking a unit](/jump_to_id/section1/subsection2/unit2)
+```
+[linking a unit](/jump_to_id/section1/subsection2/unit2)
+```
 
 
 ##Help & Examples
