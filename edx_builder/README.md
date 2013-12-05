@@ -277,12 +277,12 @@ To link toward another course's unit, link toward the unit identifier as stated 
 
 
 ##Help & Examples
-If you feel lost about folder structure and the custom mardown syntax we use here, visit the **tests/test_course** section of this repository to see an complete **Example**.
+If you feel lost about folder structure and the custom mardown syntax we use here, visit the **tests/test_course** section of this repository to see a complete example.
 
 ##Dependencies
 
-  colifrapy
-  lxml
-  Markdown
-  pyyaml
-  python-scribd
+    colifrapy
+    lxml
+    Markdown
+    pyyaml
+    python-scribd
