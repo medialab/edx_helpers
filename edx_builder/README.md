@@ -184,6 +184,8 @@ A video component **must** have the following metadatas:
 
 1. *A name* **name**
 2. *A Youtube id* **youtube_id** (typically, on a youtube url like http://www.youtube.com/watch?v=98BIu9dpwHU, the id is this final part after ?v= --> "98BIu9dpwHU")
+3. (optional) *Start position* **start** the time when you want the video to start (seconds in float)
+4. (optional) *End position* **end** the time when you want the video to end (seconds in float)
 
 **Example**
 
@@ -191,6 +193,8 @@ A video component **must** have the following metadatas:
 component: video
 id: KL_v-y0AneEgit stat
 name: Test Video
+start: 120
+end: 355
 ```
 
 ###Discussion component
@@ -210,23 +214,62 @@ name: Name in hover
 ```
 
 ##Markdown Syntax Subset
-TODO
+
+titles bold italic images link
 
 ###Standard Markdown Elements
-TODO
+The most common markdown elements used for the html components are the following:
+
+####Titles
+
+  #Level 1 Title
+  ##Level 2 Title
+  ###Level 3 Title
+
+####Bold & Italic
+
+  *italic text*
+  **bold text**
+
+####Images and links
+
+  ![image description](http://link/to/the/image.png)
+  [link description](http://any/url)
 
 ###Custom Markdown Elements
-scribd
-floating image
-separating component
+
+####Component separator
+
+  * * *
+
+####Scrib iframe
+
+  [[pdf:http://www.scribd.com/doc/185064084/melissa-pdf]]
+
+####Floating image
+
+  ![image description:left](http://link/to/the/image.png)
+  ![image description:right](http://link/to/the/image.png)
+
+####Static and jump link
+Leading slashes **are** important.
+
+
+  [link description](/static/name_of_the_static_file.pdf)
+  ![image description](/static/name_of_the_static_image.png)
+
+Do link toward another course's unit, link toward the unit identifier as stated in the yaml course layout.
+
+  [linking a unit](/jump_to_id/section1/subsection2/unit2)
+
 
 ##Help & Examples
 If you feel lost about folder structure and the custom mardown syntax we use here, visit the **tests/test_course** section of this repository to see an complete **Example**.
 
 ##Dependencies
 
-    colifrapy
-    lxml
-    Markdown
-    pyyaml
-    python-scribd
+  colifrapy
+  lxml
+  Markdown
+  pyyaml
+  python-scribd
