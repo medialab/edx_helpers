@@ -1,5 +1,7 @@
 // Beware, refaire le sprite avec fond blanc aussi.
 // BEWARE !!!!!
+// data-thread-page
+// renvoyer courseware-title
 
 // plus la string blue highlight
 

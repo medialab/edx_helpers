@@ -65,6 +65,16 @@ class VideoXMLTemplate(Component):
         self.root.set('youtube', '1.00:%s' % self.data['id'])
         self.root.set('display_name', self.data['name'])
 
+        # Start and End time
+        start_time = self.data.get('start')
+        end_time = self.data.get('end')
+
+        if start_time is not None:
+            self.root.set('start_time', start_time)
+
+        if end_time is not None:
+            self.root.set('end_time', end_time)
+
 
 class DiscussionXMLTemplate(Component):
 
