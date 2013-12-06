@@ -50,6 +50,7 @@ class HtmlXMLTemplate(Component):
             ]
         )
 
+
 class VideoXMLTemplate(Component):
 
     # Properties

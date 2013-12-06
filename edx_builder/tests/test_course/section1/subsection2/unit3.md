@@ -18,3 +18,17 @@ name: Bleu de bleu
 
 #Fous du gaag
 fafa *italic*
+
+* * *
+component: html
+
+#Titre 1 substitute
+test
+**boldness**
+
+* * *
+component: html
+
+very long texte aimed at being the title of this gentle unit whistling in the wind
+
+*italic*
