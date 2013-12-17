@@ -10,7 +10,7 @@ ok
 * * *
 
 component: video
-id: KL_v-y0AneE
+id: x18cvw1
 name: Test Video
 
 * * *

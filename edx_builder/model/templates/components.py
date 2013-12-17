@@ -77,6 +77,34 @@ class VideoXMLTemplate(Component):
             self.root.set('end_time', end_time)
 
 
+class OverridenVideoXMLTemplate(Component):
+
+    # Properties
+    html = None
+    directory = 'html'
+
+    def process(self):
+        self.root = etree.Element('html')
+        self.root.set('filename', self.id)
+
+    def parse(self):
+
+        # Setting name of component
+        self.root.set('display_name', self.data['name'])
+
+        # Compiling html
+        video = etree.Element('iframe')
+        video.set('frameborder', '0')
+        video.set('width', '820')
+        video.set('height', '461')
+
+        src = 'http://www.dailymotion.com/embed/video/%s' % \
+          self.data['id']
+        video.set('src', src)
+
+        self.html = etree.tostring(video, pretty_print=True)
+
+
 class DiscussionXMLTemplate(Component):
 
     # Properties

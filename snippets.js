@@ -3,6 +3,10 @@
 // data-thread-page
 // renvoyer courseware-title
 
+// repo fin de la semaine prochaine
+// on peut taper sur ce que l'on veut tant qu'on touche pas à l'api
+// comment service en ruby (la partie en python c'est bon)
+
 // plus la string blue highlight
 
 // lms/static/js/Markdown.Converter.js

@@ -10,7 +10,9 @@
 # Dependencies
 #=============
 from template import XMLTemplate
-from components import HtmlXMLTemplate, VideoXMLTemplate, DiscussionXMLTemplate
+from components import HtmlXMLTemplate
+from components import OverridenVideoXMLTemplate
+from components import DiscussionXMLTemplate
 from model.tools.unit_parser import parse_unit
 
 
@@ -21,7 +23,7 @@ class VerticalXMLTemplate(XMLTemplate):
     components = []
     components_types = {
         'html': HtmlXMLTemplate,
-        'video': VideoXMLTemplate,
+        'video': OverridenVideoXMLTemplate,
         'discussion': DiscussionXMLTemplate
     }
     
