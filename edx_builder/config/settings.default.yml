@@ -28,3 +28,6 @@ settings:
     scribd:
         key: 'your-scribd-key'
         secret: 'your-scribd-secret'
+    dailymotion:
+        user_id: 'your-dm-id'
+        api_key: 'your-dm-secret'

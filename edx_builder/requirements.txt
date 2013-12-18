@@ -6,3 +6,6 @@ Markdown
 lxml
 pyyaml
 python-scribd
+
+# cloudkey
+# easy_install pycurl
