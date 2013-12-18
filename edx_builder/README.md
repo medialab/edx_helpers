@@ -191,7 +191,7 @@ A video component **must** have the following metadatas:
 
 ```markdown
 component: video
-id: KL_v-y0AneEgit stat
+id: KL_v-y0AneE
 name: Test Video
 start: 120
 end: 355
