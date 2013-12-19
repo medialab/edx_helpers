@@ -14,7 +14,10 @@ import markdown
 from lxml import etree
 from template import XMLTemplate
 from model.mdx import ScribdExtension, ImageExtension, LinkExtension
+from colifrapy import Settings
+from cloudkey from CloudKey
 
+CLOUDKEY = None
 
 class Component(XMLTemplate):
 
@@ -84,6 +87,15 @@ class OverridenVideoXMLTemplate(Component):
     directory = 'html'
 
     def process(self):
+
+        # Setting up cloudkey once
+        if CLOUDKEY is None:
+            s = Settings()
+            CLOUDKEY = CloudKey(
+                self.settings.dailymotion['user_id'],
+                self.settings.dailymotion['api_key']
+            )
+
         self.root = etree.Element('html')
         self.root.set('filename', self.id)
 
@@ -98,8 +110,7 @@ class OverridenVideoXMLTemplate(Component):
         video.set('width', '820')
         video.set('height', '461')
 
-        src = 'http://www.dailymotion.com/embed/video/%s' % \
-          self.data['id']
+        src = CLOUDKEY.media.get_embed_url(self.data['id'])
         video.set('src', src)
 
         self.html = etree.tostring(video, pretty_print=True)

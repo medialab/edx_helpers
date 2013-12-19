@@ -17,7 +17,7 @@ Sed porta nec risus eu consectetur. In ullamcorper, tortor non accumsan condimen
 * * *
 
 component: video
-id: KL_v-y0AneEgit stat
+id: KL_v-y0AneE
 name: Test Video
 
 * * *

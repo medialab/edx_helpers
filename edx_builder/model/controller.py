@@ -57,10 +57,4 @@ class Controller(Model):
 
     # Testing
     def test(self):
-        from cloudkey import CloudKey
-        cloudkey = CloudKey(
-            self.settings.dailymotion['user_id'],
-            self.settings.dailymotion['api_key']
-        )
-
-        print cloudkey.media.get_embed_url('id')
+        print 'test'
