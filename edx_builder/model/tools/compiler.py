@@ -10,6 +10,7 @@
 # Dependencies
 #=============
 import os
+import codecs
 import tarfile
 import shutil
 
@@ -70,7 +71,7 @@ class Compiler(object):
 
         # Writing file
         for path, data in self.files.items():
-            with open(self.path+path, 'w') as wf:
+            with codecs.open(self.path + path, 'w', 'utf-8') as wf:
                 wf.write(data)
 
         # Copying static files

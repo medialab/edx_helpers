@@ -9,6 +9,7 @@
 
 # Dependencies
 #=============
+import codecs
 import os
 import sys
 import uuid
@@ -37,8 +38,8 @@ class CourseFolder(Model):
 
         # Reading folder or zipfile
         if self.zipped:
-            self.zip_handle = ZipFile(path)
-            self.zip_folder = path.split(os.sep)[-1].replace('.zip', '') + '/'
+            self.zip_handle = ZipFile(path, 'r')
+            self.zip_folder = self.zip_handle.namelist()[0].split('/')[0] + '/'
 
         # Reading layout
         try:
@@ -47,7 +48,7 @@ class CourseFolder(Model):
         except Exception as e:
             self.log.write('errors:course_not_found')
             self.log.write('errors:aborting')
-            sys.exit()
+            raise e
 
         # Static file path
         self.static = self.path + self.layout.get('static', 'static') + os.sep
@@ -57,9 +58,10 @@ class CourseFolder(Model):
     # Opening a file path (folder/zip agnostic)
     def openPath(self, path):
         if self.zipped:
-            return self.zip_handle.read(self.zip_folder + path)
+            string = self.zip_handle.read(self.zip_folder + path)
+            return string.decode('utf-8')
         else:
-            with open(self.path + path, 'r') as pf:
+            with codecs.open(self.path + path, 'r', 'utf-8') as pf:
                 return pf.read()
 
     # Sequence iterator

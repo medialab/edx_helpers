@@ -34,7 +34,11 @@ class LinkOverridenPattern(LinkPattern):
 
         if jump:
             unit_path  = href.split('/jump_to_id/')[-1]
-            el.set('href', '/jump_to_id/' + index.get(unit_path))
+
+            hashid = index.get(unit_path)
+            if hashid is None:
+                raise Exception('Bad internal link : %s' % (unit_path,))
+            el.set('href', '/jump_to_id/' + hashid)
         else:
             el.set('href', href)
             el.set('target', '_blank')

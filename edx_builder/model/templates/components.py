@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # -------------------------------------------------------------------
 # EdxBuilder Vertical XML Template
 # -------------------------------------------------------------------
@@ -15,9 +16,8 @@ from lxml import etree
 from template import XMLTemplate
 from model.mdx import ScribdExtension, ImageExtension, LinkExtension
 from colifrapy import Settings
-from cloudkey from CloudKey
+from cloudkey import CloudKey
 
-CLOUDKEY = None
 
 class Component(XMLTemplate):
 
@@ -43,9 +43,12 @@ class HtmlXMLTemplate(Component):
         # Setting name of component
         self.root.set('display_name', self.data['name'])
 
+        # Dealing with weird characters
+        text = self.data['text']
+
         # Compiling markdown
         self.html = markdown.markdown(
-            self.data['text'],
+            text,
             extensions=[
                 LinkExtension(),
                 ImageExtension(),
@@ -83,17 +86,18 @@ class VideoXMLTemplate(Component):
 class OverridenVideoXMLTemplate(Component):
 
     # Properties
+    CLOUDKEY = None
     html = None
     directory = 'html'
 
     def process(self):
 
         # Setting up cloudkey once
-        if CLOUDKEY is None:
-            s = Settings()
-            CLOUDKEY = CloudKey(
-                self.settings.dailymotion['user_id'],
-                self.settings.dailymotion['api_key']
+        if self.CLOUDKEY is None:
+            s = Settings().accessSettingsDict()
+            self.CLOUDKEY = CloudKey(
+                s.dailymotion['user_id'],
+                s.dailymotion['api_key']
             )
 
         self.root = etree.Element('html')
@@ -110,7 +114,7 @@ class OverridenVideoXMLTemplate(Component):
         video.set('width', '820')
         video.set('height', '461')
 
-        src = CLOUDKEY.media.get_embed_url(self.data['id'])
+        src = self.CLOUDKEY.media.get_embed_url(self.data['id'])
         video.set('src', src)
 
         self.html = etree.tostring(video, pretty_print=True)
