@@ -68,6 +68,7 @@ def parse_markdown(lines):
 def get_default_name(text):
 
     # Matching a markdown title
+    title = None
     title_match = re.search(TITLE_RE, text)
     if title_match is not None:
         title = title_match.group(1)
@@ -75,7 +76,7 @@ def get_default_name(text):
         first_text_match = re.search(FIRST_TEXT_RE, text)
         if first_text_match is not None:
             title = first_text_match.group(1)
-    return smart_truncate(title)
+    return smart_truncate(title or 'Introduction')
 
 
 def smart_truncate(content, length=60, suffix='...'):
