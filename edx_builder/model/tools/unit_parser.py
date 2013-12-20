@@ -13,7 +13,7 @@ import re
 import yaml
 
 TITLE_RE = re.compile('#{1,6}(.+)$', re.MULTILINE)
-FIRST_TEXT_RE = re.compile('(.+$)', re.MULTILINE)
+FIRST_TEXT_RE = re.compile('^[^\[!](.+)$', re.MULTILINE)
 
 def parse_unit(file_string):
     components = []

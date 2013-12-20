@@ -20,6 +20,11 @@ class XMLTemplate(object):
         self.__setMetas(metas)
 
     def addChild(self, tag, hashid=None):
+
+        # NASTY OVERRIDE - CHANGE WHEN DECISION ARE MADE
+        if tag == 'video':
+            tag = 'html'
+
         h = hashid or uuid.uuid4().hex
         se = etree.Element(tag)
         se.set('url_name', h)
