@@ -35,7 +35,10 @@ class ImageOverridenPattern(ImagePattern):
             fl = meta[1]
             margin_side = 'left' if fl == 'right' else 'right'
             el.set('style', 'float: %s; margin-%s: 10px;' % (fl, margin_side))
-
+        else:
+            el.set('style', str('display: block; '
+                                'margin-right: auto; '
+                                'margin-left: auto;'))
 
         # Returning
         return el

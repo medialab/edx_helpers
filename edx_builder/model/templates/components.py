@@ -113,6 +113,7 @@ class OverridenVideoXMLTemplate(Component):
         video.set('frameborder', '0')
         video.set('width', '820')
         video.set('height', '461')
+        video.set('scrolling', '0')
 
         src = self.CLOUDKEY.media.get_embed_url(self.data['id'])
         video.set('src', src)
