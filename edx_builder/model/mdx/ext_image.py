@@ -9,6 +9,7 @@
 
 # Dependencies
 #=============
+import re
 from markdown.util import etree
 from markdown.extensions import Extension
 from markdown.inlinepatterns import ImagePattern, IMAGE_LINK_RE
@@ -30,12 +31,29 @@ class ImageOverridenPattern(ImagePattern):
         alt = meta[0]
         el.set('alt', alt)
 
-        # Floating image?
-        if len(meta) > 1:
-            fl = meta[1]
-            margin_side = 'left' if fl == 'right' else 'right'
-            el.set('style', 'float: %s; margin-%s: 10px;' % (fl, margin_side))
-        else:
+        # Attributes
+        floating = False
+        for attribute in meta[1:]:
+
+            # Left & right
+            if attribute == 'left' or attribute == 'rigth':
+                margin_side = 'left' if attribute == 'right' else 'right'
+                el.set(
+                    'style',
+                    'float: %s; margin-%s: 10px;' % \
+                      (attribute, margin_side)
+                )
+                floating = True
+
+            # Height
+            if 'height' in attribute:
+                hm = re.match(r'.*\((\w+)\)', attribute)
+                height = '400' if hm is None else hm.group(1)
+                el.set('height', height)
+                el.set('width', 'auto')
+
+        # Center the image
+        if not floating:
             el.set('style', str('display: block; '
                                 'margin-right: auto; '
                                 'margin-left: auto;'))
