@@ -36,7 +36,7 @@ class ImageOverridenPattern(ImagePattern):
         for attribute in meta[1:]:
 
             # Left & right
-            if attribute == 'left' or attribute == 'rigth':
+            if attribute == 'left' or attribute == 'right':
                 margin_side = 'left' if attribute == 'right' else 'right'
                 el.set(
                     'style',
