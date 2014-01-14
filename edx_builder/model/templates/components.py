@@ -10,6 +10,7 @@
 
 # Dependencies
 #=============
+import time
 import yaml
 import markdown
 from lxml import etree
@@ -115,7 +116,10 @@ class OverridenVideoXMLTemplate(Component):
         video.set('height', '461')
         video.set('scrolling', '0')
 
-        src = self.CLOUDKEY.media.get_embed_url(self.data['id'])
+        src = self.CLOUDKEY.media.get_embed_url(
+            self.data['id'],
+            expires=time.time() + 1296000
+        )
         video.set('src', src)
 
         self.html = etree.tostring(video, pretty_print=True)

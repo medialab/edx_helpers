@@ -20,6 +20,8 @@ print markdown.markdown(u'![description:left](http://test.com)', [ext2])
 print markdown.markdown(u'![description:height(300)](http://test.com)', [ext2])
 print markdown.markdown(u'![description:height](http://test.com)', [ext2])
 print markdown.markdown(u'![description:height:left](http://test.com)', [ext2])
+print markdown.markdown(u'![description:height:right](http://test.com)', [ext2])
+
 
 
 ''' <iframe class="scribd_iframe_embed" src="//www.scribd.com/embeds/185064084/content?start_page=1&view_mode=scroll&access_key=key-2oshwm8ft80hr8f9r6gq&show_recommendations=false" data-auto-height="false" data-aspect-ratio="0.256541524459613" scrolling="no" id="doc_96072" width="409" height="546" frameborder="0"></iframe> '''
