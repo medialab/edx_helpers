@@ -15,7 +15,7 @@ arguments:
 - [ ['colifrapy_action'], {'choices': ['test', 'build']} ]
 - [ ['target'] ]
 - [ ['-o', '--output'], {'default': 'output'}]
-
+- [ ['-p', '--platform'], {'default': 'edx', 'choices': ['edx', 'fun']}]
 
 # Logger Settings
 logger:

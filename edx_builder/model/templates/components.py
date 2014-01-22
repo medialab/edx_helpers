@@ -69,8 +69,16 @@ class VideoXMLTemplate(Component):
     def parse(self):
 
         # Allocating meta datas
-        self.root.set('youtube_id_1_0', self.data['id'])
-        self.root.set('youtube', '1.00:%s' % self.data['id'])
+
+        # Old method
+        # self.root.set('youtube_id_1_0', self.data['id'])
+        # self.root.set('youtube', '1.00:%s' % self.data['id'])
+        # self.root.set('display_name', self.data['name'])
+
+        # FUN method
+        self.root.set('youtube_id_1_0', '')
+        html_source = '["%s"]' % self.data['id']
+        self.root.set('html5_sources', html_source)
         self.root.set('display_name', self.data['name'])
 
         # Start and End time
@@ -95,7 +103,7 @@ class OverridenVideoXMLTemplate(Component):
 
         # Setting up cloudkey once
         if self.CLOUDKEY is None:
-            s = Settings().accessSettingsDict()
+            s = Settings().getDict()
             self.CLOUDKEY = CloudKey(
                 s.dailymotion['user_id'],
                 s.dailymotion['api_key']

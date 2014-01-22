@@ -33,8 +33,8 @@ class PDFPattern(Pattern):
         el.set('class', 'scribd_iframe_embed')
         el.set('scrolling', 'no')
         el.set('data-auto-height', 'false')
-        el.set('width', '820')
-        el.set('height', '546')
+        el.set('width', client.desired_size[0])
+        el.set('height', client.desired_size[1])
         el.set('frameborder', '0')
 
         # Forging the iframe url

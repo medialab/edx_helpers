@@ -11,9 +11,10 @@
 #=============
 from template import XMLTemplate
 from components import HtmlXMLTemplate
-from components import OverridenVideoXMLTemplate
+from components import OverridenVideoXMLTemplate, VideoXMLTemplate
 from components import DiscussionXMLTemplate
 from model.tools.unit_parser import parse_unit
+from colifrapy import Commander
 
 
 # AKA Unit
@@ -36,6 +37,11 @@ class VerticalXMLTemplate(XMLTemplate):
                 'display_name': self.data['name']
             }
         )
+
+        # Platform override
+        platform = Commander().opts.platform
+        if platform == 'fun':
+            self.components_types['video'] = VideoXMLTemplate
 
         self.computeComponents()
 

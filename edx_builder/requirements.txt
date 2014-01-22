@@ -8,4 +8,6 @@ pyyaml
 python-scribd
 
 # cloudkey
-# easy_install pycurl
+# sudo apt-get install libcurl4-openssl
+# export PYCURL_SSL_LIBRARY=openssl
+# pip install pycurl

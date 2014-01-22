@@ -11,6 +11,7 @@
 #=============
 import uuid
 from lxml import etree
+from colifrapy import Commander
 
 
 class XMLTemplate(object):
@@ -21,8 +22,9 @@ class XMLTemplate(object):
 
     def addChild(self, tag, hashid=None):
 
-        # NASTY OVERRIDE - CHANGE WHEN DECISION ARE MADE
-        if tag == 'video':
+        # NASTY OVERRIDE - CHANGE WHEN DECISIONS ARE MADE
+        platform = Commander().opts.platform
+        if platform == 'edx' and tag == 'video':
             tag = 'html'
 
         h = hashid or uuid.uuid4().hex
