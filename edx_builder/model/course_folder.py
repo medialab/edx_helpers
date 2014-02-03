@@ -53,6 +53,12 @@ class CourseFolder(Model):
         # Static file path
         self.static = self.path + self.layout.get('static', 'static') + os.sep
 
+        # Retrieving Course Overview
+        try:
+            self.overview = self.openPath('overview.md')
+        except:
+            self.overview = None
+
         self.log.write('main:course_name', self.layout['name'])
 
     # Opening a file path (folder/zip agnostic)

@@ -52,7 +52,13 @@ class VerticalXMLTemplate(XMLTemplate):
         for component in parse_unit(self.data['file']):
 
             # Adding component to xml
-            h = self.addChild(component['type'])
+            if component['type'] == 'discussion':
+                h = self.addChild(
+                    component['type'],
+                    seed=component['metas']['name']
+                )
+            else:
+                h = self.addChild(component['type'])
 
             # Adding components to data
             self.components.append(

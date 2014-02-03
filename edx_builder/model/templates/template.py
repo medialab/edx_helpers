@@ -9,6 +9,7 @@
 
 # Dependencies
 #=============
+import md5
 import uuid
 from lxml import etree
 from colifrapy import Commander
@@ -20,14 +21,17 @@ class XMLTemplate(object):
         self.root = etree.Element(element)
         self.__setMetas(metas)
 
-    def addChild(self, tag, hashid=None):
+    def addChild(self, tag, hashid=None, seed=None):
 
         # NASTY OVERRIDE - CHANGE WHEN DECISIONS ARE MADE
         platform = Commander().opts.platform
         if platform == 'edx' and tag == 'video':
             tag = 'html'
 
-        h = hashid or uuid.uuid4().hex
+        if seed is not None:
+            h = md5.new(seed.encode('utf-8')).hexdigest()
+        else:
+            h = hashid or uuid.uuid4().hex
         se = etree.Element(tag)
         se.set('url_name', h)
         self.root.append(se)

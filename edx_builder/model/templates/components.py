@@ -80,16 +80,19 @@ class VideoXMLTemplate(Component):
         html_source = '["%s"]' % self.data['id']
         self.root.set('html5_sources', html_source)
         self.root.set('display_name', self.data['name'])
+        source_child = etree.Element('source')
+        source_child.set('src', self.data['id'])
+        self.root.append(source_child)
 
         # Start and End time
         start_time = self.data.get('start')
         end_time = self.data.get('end')
 
         if start_time is not None:
-            self.root.set('start_time', start_time)
+            self.root.set('start_time', str(start_time))
 
         if end_time is not None:
-            self.root.set('end_time', end_time)
+            self.root.set('end_time', str(end_time))
 
 
 class OverridenVideoXMLTemplate(Component):
@@ -146,6 +149,7 @@ class DiscussionXMLTemplate(Component):
         # Allocating meta datas
         if self.data.get('name') is not None:
             self.root.set('display_name', self.data['name'])
+            self.root.set('discussion_id', self.id)
 
         if self.data.get('category') is not None:
             self.root.set('discussion_category', self.data['category'])

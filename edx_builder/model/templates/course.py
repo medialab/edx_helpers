@@ -35,7 +35,8 @@ class CourseXMLTemplate(XMLTemplate):
                 'display_name': ly['name'],
                 'start': ly['start'],
                 'advanced_modules': ly['advanced_modules'].__repr__() or [],
-                'course_image': ly['course_image'] or 'cover.png'
+                'course_image': ly['course_image'] or 'cover.png',
+                'discussion_sort_alpha': 'true'
             }
         )
 
@@ -56,9 +57,12 @@ class CourseXMLTemplate(XMLTemplate):
     def computeAnnexes(self):
 
         # About
-        overview_root = etree.Element('section')
-        overview_root.set('class', 'about')
-        self.overview = etree.tostring(overview_root, pretty_print=True)
+        if (self.folder.overview):
+            self.overview = self.folder.overview
+        else:
+            overview_root = etree.Element('section')
+            overview_root.set('class', 'about')
+            self.overview = etree.tostring(overview_root, pretty_print=True)
 
         # Effort
         self.effort = self.folder.layout.get('effort') or '3:00'
