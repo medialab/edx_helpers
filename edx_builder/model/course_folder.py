@@ -18,6 +18,7 @@ from zipfile import ZipFile
 from colifrapy import Model
 from colifrapy.tools.utilities import normalize_path
 from tools.unit_index import UnitIndex
+from templates.page import StaticPage
 
 
 # Main Class
@@ -52,6 +53,19 @@ class CourseFolder(Model):
 
         # Static file path
         self.static = self.path + self.layout.get('static', 'static') + os.sep
+
+        # Compile static pages
+        self.pages = []
+        for p in self.layout.get('pages', []):
+            self.pages.append(StaticPage(
+                    p['id'],
+                    self.openPath('pages' + os.sep + p['path'] + '.md')
+                )
+            )
+
+        # Policies
+        self.grading_policy = self.openPath('policies/grading_policy.json')
+        self.policy = self.openPath('policies/policy.json')
 
         # Retrieving Course Overview
         try:

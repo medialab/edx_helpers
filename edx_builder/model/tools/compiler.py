@@ -29,20 +29,26 @@ class Compiler(object):
         'info',
         'policies',
         'sequential',
+        'tabs',
         'static',
         'vertical',
         'video'
     ]
     files = {}
     
-    def __init__(self, course, output_path):
+    def __init__(self, course, output_path, zipped=True):
 
         # Creating arborescence
-        self.path = output_path+course.identifier + os.sep
+        self.path = output_path + course.identifier + os.sep
         try:
             os.mkdir(self.path)
             for d in self.arborescence:
-                os.mkdir(self.path+d)
+                os.mkdir(self.path + d)
+
+                if d == 'policies':
+                    self.policies_path = d + os.sep + course.identifier
+                    os.mkdir(self.path + self.policies_path)
+
         except:
             pass
 
@@ -51,7 +57,9 @@ class Compiler(object):
             'about/effort.html': course.effort,
             'about/overview.html': course.overview,
             'course/%s.xml' % course.identifier: course.compile(),
-            'course.xml': course.xml
+            'course.xml': course.xml,
+            '%s/grading_policy.json' % self.policies_path: course.folder.grading_policy,
+            '%s/policy.json' % self.policies_path: course.folder.policy
         }
 
         # Big file loop
@@ -68,6 +76,10 @@ class Compiler(object):
                         self.files['%s/%s.xml' % (c.directory, c.id)] = c.compile()
                         if hasattr(c, 'html'):
                             self.files['%s/%s.html' % (c.directory, c.id)] = c.html
+
+        # Static pages
+        for p in course.folder.pages:
+            self.files['tabs/%s.html' % p.id] = p.html
 
         # Writing file
         for path, data in self.files.items():
@@ -87,12 +99,13 @@ class Compiler(object):
                 for sf in [f for f in os.listdir(static_directory) if os.path.isfile(static_directory + f)]:
                     shutil.copyfile(static_directory + sf, self.path + 'static/' + sf)
 
-        # Compressing
-        tar_path = '%s%s%s.tar.gz' % (output_path, os.sep, course.identifier)
-        tar = tarfile.open(tar_path, 'w:gz')
+        # Compressing if necessary
+        if zipped:
+            tar_path = '%s%s%s.tar.gz' % (output_path, os.sep, course.identifier)
+            tar = tarfile.open(tar_path, 'w:gz')
 
-        tar.add(self.path, arcname=course.identifier)
-        tar.close()
+            tar.add(self.path, arcname=course.identifier)
+            tar.close()
 
-        # Cleaning
-        shutil.rmtree(self.path)
+            # Cleaning
+            shutil.rmtree(self.path)

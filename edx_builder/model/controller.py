@@ -50,7 +50,7 @@ class Controller(Model):
 
         # Compiling the course
         self.log.write('main:compiling', output_path)
-        Compiler(course, output_path)
+        Compiler(course, output_path, not self.opts.unzipped)
 
         self.log.write('main:done')
 
