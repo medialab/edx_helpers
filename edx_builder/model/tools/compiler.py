@@ -56,6 +56,8 @@ class Compiler(object):
         self.files = {
             'about/effort.html': course.effort,
             'about/overview.html': course.overview,
+            'about/video.html': course.folder.course_video,
+            'about/short_description.html': course.folder.short_description,
             'course/%s.xml' % course.identifier: course.compile(),
             'course.xml': course.xml,
             '%s/grading_policy.json' % self.policies_path: course.folder.grading_policy,

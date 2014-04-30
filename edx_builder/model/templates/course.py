@@ -34,6 +34,9 @@ class CourseXMLTemplate(XMLTemplate):
             {
                 'display_name': ly['name'],
                 'start': ly['start'],
+                'end': ly['end'],
+                'enrollment_start': ly['enrollment_start'],
+                'enrollment_end': ly['enrollment_end'],
                 'advanced_modules': ly['advanced_modules'].__repr__() or [],
                 'course_image': ly['course_image'] or 'cover.png',
                 'discussion_sort_alpha': 'true'

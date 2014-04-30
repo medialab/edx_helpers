@@ -67,6 +67,12 @@ class CourseFolder(Model):
         self.grading_policy = self.openPath('policies/grading_policy.json')
         self.policy = self.openPath('policies/policy.json')
 
+        # Video
+        self.course_video = self.layout.get('course_video')
+
+        # Short description
+        self.short_description = self.openPath(self.layout.get('short_description'))
+
         # Retrieving Course Overview
         try:
             self.overview = self.openPath('overview.md')
