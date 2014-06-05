@@ -10,6 +10,7 @@ module.exports = function(grunt) {
     artoo: {
       dev: {
         options: {
+          url: '//localhost:8000/lib/artoo.concat.js',
           settings: {
             scriptUrl: '//localhost:8000/index.js'
           }
