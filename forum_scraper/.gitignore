@@ -1,2 +1,4 @@
 # SSL Utilities
 *.pem
+*.min.js
+node_modules
