@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "grunt": "^0.4.5",
-    "grunt-artoo": "git+https://github.com/medialab/grunt-artoo.git",
+    "grunt-artoo": "0.0.2",
     "http-server": "git+https://github.com/Yomguithereal/http-server.git"
   }
 }
