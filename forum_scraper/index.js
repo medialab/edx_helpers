@@ -108,7 +108,7 @@
 
       //2. Dealing with images
       $post.find('img').each(function() {
-        var name = (imageIndex++) + $(this).attr('src').split('/').slice(-1)[0];
+        var name = (imageIndex++) + $(this).attr('src').split('/').slice(-1)[0].split('?')[0];
 
         if (DOWNLOAD)
           artoo.saveResource($(this).attr('src'), {filename: name});
