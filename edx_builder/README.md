@@ -248,7 +248,7 @@ The most common markdown elements used for the html components are the following
 * * *
 ```
 
-####Scrib iframe
+####Scribd iframe
 
 ```
 [[pdf:http://www.scribd.com/doc/185064084/melissa-pdf]]
